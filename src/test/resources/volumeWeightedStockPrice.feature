@@ -2,9 +2,12 @@
 
 Feature: Volume Weighted Stock Price Calculation for a given stocks
 
-  Scenario Outline: Calculate Volume Weighted Stock Price for a given stock
+  Background:
 
     Given   I am on Simple Stock page
+
+  Scenario Outline: Calculate Volume Weighted Stock Price for a given stock
+
     And  I made <numberOfTrades> trades for <stock> stock with the following data
 
       |  Price   |  Quantity   |
@@ -34,7 +37,6 @@ Feature: Volume Weighted Stock Price Calculation for a given stocks
 
   Scenario: Calculate Volume Weighted Stock Price for a given stock for trades in past 15 min
 
-    Given   I am on Simple Stock page
     And  I made trades with the following data
       |  Stock    |  Price   |  Quantity   |
       |   TEA     |   100    |     20      |
