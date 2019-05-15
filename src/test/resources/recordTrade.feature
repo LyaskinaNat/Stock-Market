@@ -11,13 +11,29 @@ Feature: Record a trade
       |   POP     |   150    |     100     |
 
 
-  Scenario: Recorded trade contains required headers
+  Scenario Outline: Recorded trade contains required headers
 
-    Then The trade record has the following headers
-       | Transaction Date | Stock    | Price | No. Shares Purchased |
+    Then The trade record has <header> header
+
+    Examples:
+
+       |      header        |
+       | Transaction Date   |
+       |      Stock         |
+       |      Price         |
+       |No. Shares Purchased|
+       |    Buy or Sell     |
 
 
-  Scenario: Recorded trades are populated with trade data
+  Scenario Outline: Recorded trades are populated with trade data
 
-    Then The trade records have trade data populated in the required fields
+    Then The trade records have trade data populated in <header> fields
 
+    Examples:
+
+      |      header        |
+      | Transaction Date   |
+      |      Stock         |
+      |      Price         |
+      |No. Shares Purchased|
+      |    Buy or Sell     |
