@@ -29,23 +29,17 @@ Feature: Dividend Yield Calculation
       |   GIN     |        1          |
       |   JOE     |        1          |
 
-  Scenario Outline: Dividend Yield Calculation for a given stock based on last trade price
+  Scenario: Dividend Yield Calculation for a given stock based on last trade price
 
-    And  I made <numberOfTrades> trades for <stock> stock with the following data
-
-      |  Price   |  Quantity   |
-      |   150    |     20      |
-      |   60     |     85      |
-      |   250    |     120     |
+    And  I made trades with the following data
+      |  Stock    |  Price   |  Quantity   |
+      |   POP     |   100    |     20      |
+      |   POP     |   180    |     100     |
 
 
-    Then I see Dividend Yield for <stock> Stock in My Stock section based on last trade price
+    Then I see Dividend Yield for a given Stock in My Stock section based on last trade price
 
-    Examples:
 
-      |  stock    |  numberOfTrades   |
-      |   GIN     |        2          |
-      |   JOE     |        3          |
 
 
 
