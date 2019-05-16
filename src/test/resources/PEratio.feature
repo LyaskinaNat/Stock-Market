@@ -1,5 +1,6 @@
   # For a given stock, given any price as input, calculate  the P/E Ratio
 
+  @regression
   Feature: P/E Ratio Calculation
 
     Background:

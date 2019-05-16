@@ -1,6 +1,7 @@
   # For a given stock, record a trade, with timestamp, quantity of shares, buy or sell indicator and traded price
 
-Feature: Record a trade
+  @regression
+  Feature: Record a trade
 
   Background:
 
@@ -17,12 +18,12 @@ Feature: Record a trade
 
     Examples:
 
-       |      header        |
-       | Transaction Date   |
-       |      Stock         |
-       |      Price         |
-       |No. Shares Purchased|
-       |    Buy or Sell     |
+      |      header        |
+      | Transaction Date   |
+      |      Stock         |
+      |      Price         |
+      |No. Shares Purchased|
+      |    Buy or Sell     |
 
 
   Scenario Outline: Recorded trades are populated with trade data

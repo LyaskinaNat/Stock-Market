@@ -8,8 +8,8 @@ import utils.DriverFactory;
 
 
 public class BasePage extends DriverFactory {
-    protected WebDriverWait wait;
 
+    protected WebDriverWait wait;
 
     public BasePage() {
         this.wait = new WebDriverWait(driver, 5);
@@ -17,9 +17,6 @@ public class BasePage extends DriverFactory {
     }
 
 
-    /**********************************************************************************
-     WAIT METHODS
-     **********************************************************************************/
     public boolean WaitUntilWebElementIsVisible(WebElement element) {
         try {
             this.wait.until(ExpectedConditions.visibilityOf(element));

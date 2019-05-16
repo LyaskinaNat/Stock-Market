@@ -1,7 +1,6 @@
 package stepDefs;
 
 import cucumber.api.java.en.Then;
-
 import static utils.DriverFactory.*;
 
 public class PERatioStepDef {

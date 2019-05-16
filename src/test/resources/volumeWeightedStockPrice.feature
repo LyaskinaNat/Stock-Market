@@ -1,11 +1,12 @@
 # For a given stock,  calculate Volume Weighted Stock Price based on trades in past 15 minutes
 
-Feature: Volume Weighted Stock Price Calculation for a given stocks
+  Feature: Volume Weighted Stock Price Calculation for a given stocks
 
   Background:
 
     Given   I am on Simple Stock page
 
+  @regression
   Scenario Outline: Calculate Volume Weighted Stock Price for a given stock
 
     And  I made <numberOfTrades> trades for <stock> stock with the following data

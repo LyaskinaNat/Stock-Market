@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
         glue = {"stepDefs"},
         plugin = {"pretty", "html:target/cucumber"},
         monochrome = true,
-        tags = {}
+        tags = {"@regression"}
 
 )
 

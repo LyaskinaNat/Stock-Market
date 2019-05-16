@@ -1,6 +1,7 @@
   # For a given stock, given any price as input, calculate the dividend yield
 
-Feature: Dividend Yield Calculation
+  @regression
+  Feature: Dividend Yield Calculation
 
   Background:
 

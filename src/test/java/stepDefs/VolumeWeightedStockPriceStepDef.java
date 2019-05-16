@@ -9,16 +9,11 @@ public class VolumeWeightedStockPriceStepDef {
 
     @And("^I wait (\\d+) min$")
     public void i_wait_min(int min) throws Throwable {
-        //Waiting 16 min
+
+            //Waiting 16 min
 
             Integer millisecs = 60000 * min;
-
-        //Toggle between running test for 16 min and 2 sec (for demonstration purposes)
-
-          //   Thread.sleep(millisecs);
-           Thread.sleep(2000);
-
-
+            Thread.sleep(millisecs);
 
     }
 
