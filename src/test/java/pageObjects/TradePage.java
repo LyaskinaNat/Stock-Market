@@ -24,6 +24,9 @@ public class TradePage extends BasePage {
 
 
     //Recent Trades section
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[1]/p[1]")
+    public WebElement noTrades;
+
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/thead[1]/tr[1]/td[1]")
     public WebElement timeStampKey;
 
@@ -86,7 +89,7 @@ public class TradePage extends BasePage {
 
     }
 
-    public MyStockPage makeTrades (String stock, DataTable dt, int numberOfTrades) {
+    public TradePage makeTrades (String stock, DataTable dt, int numberOfTrades) {
         List<List<String>> list = dt.asLists(String.class);
         Select oSelect = new Select(tradePage.oSelect);
         try {
@@ -100,10 +103,10 @@ public class TradePage extends BasePage {
              Assert.fail("Unable to to locate WebElement or/and send keys to it, Exception: " + e.getMessage());
 
         }
-        return new MyStockPage();
+        return new TradePage();
     }
 
-    public MyStockPage makeTradesForDifferentStocks (DataTable dt) {
+    public TradePage makeTradesForDifferentStocks (DataTable dt) {
         List<List<String>> list = dt.asLists(String.class);
          try {
             for (int i = 1; i < list.size(); i++) {
@@ -118,6 +121,21 @@ public class TradePage extends BasePage {
             Assert.fail("Unable to to locate WebElement or/and send keys to it, Exception: " + e.getMessage());
 
         }
-        return new MyStockPage();
+        return new TradePage();
     }
+
+    public TradePage CustomInputsForTrade (String stock, String price, String quantity) {
+
+        try {
+            Select oSelect = new Select(tradePage.oSelect);
+            oSelect.selectByVisibleText(stock);
+            tradePage.price.sendKeys(price);
+            tradePage.quantity.sendKeys(quantity);
+        } catch (Exception e) {
+            Assert.fail("Unable to to locate WebElement or/and send keys to it, Exception: " + e.getMessage());
+
+        }
+        return new TradePage();
+    }
+
 }

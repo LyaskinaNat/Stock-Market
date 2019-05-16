@@ -13,7 +13,7 @@ import cucumber.api.junit.Cucumber;
         glue = {"stepDefs"},
         plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json"},
         monochrome = true,
-        tags = {"@regression"}
+        tags = {"@wip"}
 
 )
 

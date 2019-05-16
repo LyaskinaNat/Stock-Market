@@ -94,7 +94,7 @@ public class MyStockPage extends BasePage {
              String actualValue = element.getText();
              System.out.println("Expected Value: " + expectedValue + ", Actual Value: " + actualValue);
              System.out.print(System.lineSeparator());
-             Assert.assertEquals(expectedValue, actualValue);
+             Assert.assertEquals("Test failed. Actual value: " + actualValue + " doesn't match the expected value: " + expectedValue, expectedValue, actualValue);
          }
          return new MyStockPage();
 

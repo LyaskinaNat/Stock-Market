@@ -20,7 +20,7 @@ public class TestData {
     public String expectedDividendYield_TEA = "0";
     public String expectedDividendYield_POP = "0.05333333333333334";
     public String expectedDividendYield_ALE = "0.15333333333333332";
-    public String expectedDividendYield_GIN = "1.3333333333333333";
+    public String expectedDividendYield_GIN = "0.0133333333333333";
     public String expectedDividendYield_JOE = "0.08666666666666667";
 
     // Expected Dividend Yield values based on last trade price
@@ -43,6 +43,9 @@ public class TestData {
 
     //Expected Volume Weighted Stock Price values for trades in last 15 min
     public String expectedVolumeWeightedStockPrice15_TEA = "150";
+
+    //No trades recorded
+    public String tradeRecordExpected = "You currently have no entries to display.";
 
 
 }

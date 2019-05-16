@@ -13,10 +13,6 @@
 
       |  Price   |  Quantity   |
       |   150    |     20      |
-      |   100    |     20      |
-      |   130    |     20      |
-      |   60     |     85      |
-      |   250    |     120     |
 
 
     Then I see Dividend Yield for <stock> Stock in My Stock section based on stock type

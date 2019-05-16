@@ -13,10 +13,7 @@
 
         |  Price   |  Quantity   |
         |   150    |     20      |
-        |   100    |     20      |
-        |   130    |     20      |
-        |   60     |     85      |
-        |   250    |     120     |
+
 
 
       Then I see the P/E Ratio for <stock> Stock in My Stock section calculated
