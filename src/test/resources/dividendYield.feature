@@ -9,10 +9,10 @@
 
   Scenario Outline: Dividend Yield Calculation for each stock based on stock type (Common/Preferred)
 
-    And  I made <numberOfTrades> trades for <stock> stock with the following data
+    When  I made <numberOfTrades> trades for <stock> stock with the following data
 
-      |  Price   |  Quantity   |
-      |   150    |     20      |
+      |  Price   |  Quantity   |  BuyOrSell   |
+      |   150    |     20      |     Buy      |
 
 
     Then I see Dividend Yield for <stock> Stock in My Stock section based on stock type
@@ -28,10 +28,10 @@
 
   Scenario: Dividend Yield Calculation for a given stock based on last trade price
 
-    And  I made trades with the following data
-      |  Stock    |  Price   |  Quantity   |
-      |   POP     |   100    |     20      |
-      |   POP     |   180    |     100     |
+    When  I made trades with the following data
+      |  Stock    |  Price   |  Quantity   |  BuyOrSell   |
+      |   POP     |   100    |     20      |     Buy      |
+      |   POP     |   180    |     100     |     Sell     |
 
 
     Then I see Dividend Yield for a given Stock in My Stock section based on last trade price

@@ -1,8 +1,9 @@
 package stepDefs;
 
 import cucumber.api.DataTable;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
+
 import static utils.DriverFactory.*;
 
 
@@ -13,14 +14,14 @@ public class SharedStepDef {
 
     }
 
-    @And("I made trades with the following data")
+    @When("I made trades with the following data")
     public void i_made_trades_with_the_following_data(DataTable dt)  {
 
         tradePage.makeTradesForDifferentStocks (dt);
 
     }
 
-    @And("I made (.+) trades for (.+) stock with the following data")
+    @When("I made (.+) trades for (.+) stock with the following data")
     public void i_made_trades_for_stock_with_the_following_data(Integer numberOfTrades, String stock, DataTable dt) {
 
             switch (stock) {

@@ -11,7 +11,7 @@ public class TradePage extends BasePage {
 
     //Make a trade section
     @FindBy(name = "stockSymbol")
-    public WebElement oSelect;
+    public WebElement selectStock;
 
     @FindBy(name = "price")
     public WebElement price;
@@ -19,13 +19,14 @@ public class TradePage extends BasePage {
     @FindBy(name = "quantity")
     public WebElement quantity;
 
+//  @FindBy(name = "buySell")
+//  public WebElement buySellIndicator;
+
     @FindBy(name = "submit-button")
     public WebElement submit;
 
 
     //Recent Trades section
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[1]/p[1]")
-    public WebElement noTrades;
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/thead[1]/tr[1]/td[1]")
     public WebElement timeStampKey;
@@ -91,13 +92,14 @@ public class TradePage extends BasePage {
 
     public TradePage makeTrades (String stock, DataTable dt, int numberOfTrades) {
         List<List<String>> list = dt.asLists(String.class);
-        Select oSelect = new Select(tradePage.oSelect);
+        Select oSelect = new Select(selectStock);
         try {
             for (int i = 1; i <= numberOfTrades; i++) {
                 oSelect.selectByVisibleText(stock);
-                tradePage.price.sendKeys(list.get(i).get(0));
-                tradePage.quantity.sendKeys(list.get(i).get(1));
-                tradePage.submit.click();
+                price.sendKeys(list.get(i).get(0));
+                quantity.sendKeys(list.get(i).get(1));
+ //             buySell.sendKeys(list.get(i).get(2));
+                submit.click();
             }
         } catch (Exception e) {
              Assert.fail("Unable to to locate WebElement or/and send keys to it, Exception: " + e.getMessage());
@@ -111,12 +113,14 @@ public class TradePage extends BasePage {
          try {
             for (int i = 1; i < list.size(); i++) {
 
-                Select oSelect = new Select(tradePage.oSelect);
+                Select oSelect = new Select(selectStock);
                 oSelect.selectByVisibleText(list.get(i).get(0));
-                tradePage.price.sendKeys(list.get(i).get(1));
-                tradePage.quantity.sendKeys(list.get(i).get(2));
-                tradePage.submit.click();
+                price.sendKeys(list.get(i).get(1));
+                quantity.sendKeys(list.get(i).get(2));
+ //             buySell.sendKeys(list.get(i).get(3));
+                submit.click();
             }
+
         } catch (Exception e) {
             Assert.fail("Unable to to locate WebElement or/and send keys to it, Exception: " + e.getMessage());
 
@@ -124,13 +128,14 @@ public class TradePage extends BasePage {
         return new TradePage();
     }
 
-    public TradePage CustomInputsForTrade (String stock, String price, String quantity) {
+    public TradePage CustomInputsForTrade (String stock, String price, String quantity/*,String buyOrSell*/) {
 
         try {
-            Select oSelect = new Select(tradePage.oSelect);
+            Select oSelect = new Select(selectStock);
             oSelect.selectByVisibleText(stock);
             tradePage.price.sendKeys(price);
             tradePage.quantity.sendKeys(quantity);
+//          tradePage.buySell.sendKeys(buySell);
         } catch (Exception e) {
             Assert.fail("Unable to to locate WebElement or/and send keys to it, Exception: " + e.getMessage());
 

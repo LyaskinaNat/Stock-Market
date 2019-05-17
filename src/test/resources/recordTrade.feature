@@ -11,10 +11,11 @@
 
   Scenario Outline: Recorded trade contains required headers
 
-    And  I made trades with the following data
-      |  Stock    |  Price   |  Quantity   |
-      |   TEA     |   100    |     20      |
-      |   POP     |   150    |     100     |
+    When  I made trades with the following data
+
+      |  Stock    |  Price   |  Quantity   |  BuyOrSell    |
+      |   TEA     |   100    |     20      |     Sell      |
+
 
     Then The trade record has <header> header
 
@@ -30,10 +31,11 @@
 
   Scenario Outline: Recorded trades are populated with trade data
 
-    And  I made trades with the following data
-      |  Stock    |  Price   |  Quantity   |
-      |   TEA     |   100    |     20      |
-      |   POP     |   150    |     100     |
+    When  I made trades with the following data
+
+      |  Stock    |  Price   |  Quantity   |  BuyOrSell   |
+      |   TEA     |   100    |     20      |     Sell     |
+      |   POP     |   150    |     100     |     Buy      |
 
     Then The trade records have trade data populated in <header> fields
 
@@ -54,7 +56,7 @@
 
      When I click on Submit button
 
-    Then Trade with missing <missingInput> input is not recorded
+     Then Trade with missing <missingInput> input is not recorded
 
     Examples:
 
@@ -62,6 +64,7 @@
       |       Stock        |
       |       Price        |
       |      Quantity      |
+#     |      BuyOrSell     |
 
 # User input validation - Edge case
 
@@ -80,4 +83,4 @@
         |       Stock        |
         |       Price        |
         |      Quantity      |
-
+#       |      BuyOrSell     |

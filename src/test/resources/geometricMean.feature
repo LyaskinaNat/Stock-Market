@@ -6,19 +6,19 @@
   Scenario Outline: Calculate Geometric Mean for all prices for all stocks
 
     Given   I am on Simple Stock page
-    And  I made <numberOfTrades> trades for <stock> stock with the following data
+    When  I made <numberOfTrades> trades for <stock> stock with the following data
 
-    |  Price   |  Quantity   |
-    |   100    |     90      |
-    |   110    |     100     |
-    |   105    |     121     |
-    |   60     |     201     |
-    |   65     |     199     |
-    |   68     |     280     |
-    |   100    |     85      |
-    |   107    |     80      |
-    |   110    |     86      |
-    |   200    |     55      |
+    |  Price   |  Quantity   |  BuyOrSell    |
+    |   100    |     90      |     Buy       |
+    |   110    |     100     |     Buy       |
+    |   105    |     121     |     Sell      |
+    |   60     |     201     |     Sell      |
+    |   65     |     199     |     Buy       |
+    |   68     |     280     |     Buy       |
+    |   100    |     85      |     Sell      |
+    |   107    |     80      |     Sell      |
+    |   110    |     86      |     Buy       |
+    |   200    |     55      |     Sell      |
 
 
     Then I see calculated Geometric Mean for all prices for <stock> Stock in My Stock section

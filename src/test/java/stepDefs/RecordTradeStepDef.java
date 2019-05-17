@@ -79,20 +79,24 @@ public class RecordTradeStepDef {
 
     @And("^I attempt to made a trade with (.+) missing input$")
     public void i_attempt_to_made_a_trade_with_Stock_missing_input(String missingInput) throws  Throwable {
-        Select oSelect = new Select(tradePage.oSelect);
+        Select oSelect = new Select(tradePage.selectStock);
         switch (missingInput) {
 
             case "Stock":
-                tradePage.CustomInputsForTrade("Choose Stock", "100", "80");
+                tradePage.CustomInputsForTrade("Choose Stock", "100", "80" /*, "Buy"*/);
                 break;
 
             case "Price":
-                tradePage.CustomInputsForTrade("TEA", "", "80");
+                tradePage.CustomInputsForTrade("TEA", "", "80" /*, "Buy"*/);
                 break;
 
             case "Quantity":
-                tradePage.CustomInputsForTrade("TEA", "100", "");
+                tradePage.CustomInputsForTrade("TEA", "100", "" /*, "Buy"*/);
                 break;
+
+ //        case "BuyOrSell":
+ //             tradePage.CustomInputsForTrade("TEA", "100", "80", "");
+ //             break;
 
         }
 
@@ -100,7 +104,7 @@ public class RecordTradeStepDef {
 
     @And("^I enter all required inputs to make a trade$")
     public void i_enter_all_required_inputs_to_make_a_trade() {
-        tradePage.CustomInputsForTrade("POP", "150", "300");
+        tradePage.CustomInputsForTrade("POP", "150", "300" /*, "Buy"*/);
 
     }
 
@@ -108,7 +112,7 @@ public class RecordTradeStepDef {
     public void i_then_delete_Stock_input(String missingInput) {
         switch (missingInput) {
             case "Stock":
-                Select oSelect = new Select(tradePage.oSelect);
+                Select oSelect = new Select(tradePage.selectStock);
                 oSelect.selectByVisibleText("Choose Stock");
                 break;
 
@@ -119,6 +123,10 @@ public class RecordTradeStepDef {
             case "Quantity":
                 tradePage.quantity.sendKeys("");
                 break;
+
+  //        case "BuyOrSell":
+  //            tradePage.buyOrSell.sendKeys("");
+  //            break;
 
         }
     }
@@ -149,6 +157,11 @@ public class RecordTradeStepDef {
 
                 Assert.assertEquals("Trade with missing " + missingInput + " input was recorded without the required data", testData.tradeRecordExpected, tradeRecordActual);
                 break;
+
+  //          case "BuyOrSell":
+  //
+  //            Assert.assertEquals("Trade with missing " + missingInput + " input was recorded without the required data", testData.tradeRecordExpected, tradeRecordActual);
+  //            break;
 
         }
 
