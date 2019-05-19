@@ -1,16 +1,12 @@
 # For a given stock,  calculate Volume Weighted Stock Price based on trades in past 15 minutes
 
   Feature: Volume Weighted Stock Price Calculation for a given stocks
-
   Background:
-
     Given   I am on Simple Stock page
 
   @regression
   Scenario Outline: Calculate Volume Weighted Stock Price for a given stock
-
     When  I made <numberOfTrades> trades for <stock> stock with the following data
-
       |  Price   |  Quantity   |  BuyOrSell    |
       |   100    |     90      |     Buy       |
       |   110    |     100     |     Buy       |
@@ -24,9 +20,7 @@
       |   200    |     55      |     Sell      |
 
     Then I see calculated Volume Weighted Stock Price for <stock> stock for all trades
-
     Examples:
-
       |  stock    |  numberOfTrades   |
       |   TEA     |        1          |
       |   POP     |        2          |
@@ -34,24 +28,15 @@
       |   GIN     |        5          |
       |   JOE     |        10         |
 
-
   @longrun
   Scenario: Calculate Volume Weighted Stock Price for a given stock for trades in past 15 min
-
     When  I made trades with the following data
-
       |  Stock    |  Price   |  Quantity   |  BuyOrSell   |
       |   TEA     |   100    |     20      |     Buy      |
-
-
     And I wait 16 min
-
     And  I made trades with the following data
-
       |  Stock    |  Price   |  Quantity   |  BuyOrSell   |
       |   TEA     |   150    |     50      |     Buy      |
-
-
     Then I see calculated Volume Weighted Stock Price for a given stock for trades in past 15 min
 
 

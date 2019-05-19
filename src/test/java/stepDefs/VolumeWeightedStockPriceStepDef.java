@@ -22,23 +22,23 @@ public class VolumeWeightedStockPriceStepDef {
 
         switch (stock) {
             case "TEA":
-                myStockPage.assertDisplayedValue(myStockPage.volumeWeightedStockPriceElement_TEA, testData.expectedVolumeWeightedStockPrice_TEA);
+                myStockPage.assertDisplayedValue(stock, myStockPage.volumeWeightedStockPriceIndex, testData.expectedVolumeWeightedStockPrice_TEA);
                 break;
 
             case "POP":
-                myStockPage.assertDisplayedValue(myStockPage.volumeWeightedStockPriceElement_POP, testData.expectedVolumeWeightedStockPrice_POP);
+                myStockPage.assertDisplayedValue(stock, myStockPage.volumeWeightedStockPriceIndex, testData.expectedVolumeWeightedStockPrice_POP);
                 break;
 
             case "ALE":
-                myStockPage.assertDisplayedValue(myStockPage.volumeWeightedStockPriceElement_ALE, testData.expectedVolumeWeightedStockPrice_ALE);
+                myStockPage.assertDisplayedValue(stock, myStockPage.volumeWeightedStockPriceIndex, testData.expectedVolumeWeightedStockPrice_ALE);
                 break;
 
             case "GIN":
-                myStockPage.assertDisplayedValue(myStockPage.volumeWeightedStockPriceElement_GIN, testData.expectedVolumeWeightedStockPrice_GIN);
+                myStockPage.assertDisplayedValue(stock, myStockPage.volumeWeightedStockPriceIndex, testData.expectedVolumeWeightedStockPrice_GIN);
                 break;
 
             case "JOE":
-                myStockPage.assertDisplayedValue(myStockPage.volumeWeightedStockPriceElement_JOE, testData.expectedVolumeWeightedStockPrice_JOE);
+                myStockPage.assertDisplayedValue(stock, myStockPage.volumeWeightedStockPriceIndex, testData.expectedVolumeWeightedStockPrice_JOE);
                 break;
         }
 
@@ -48,7 +48,7 @@ public class VolumeWeightedStockPriceStepDef {
     @Then("^I see calculated Volume Weighted Stock Price for a given stock for trades in past 15 min")
     public void i_see_calculated_Volume_Weighted_Stock_Price_for_a_given_stock_for_trades_in_past_15_min() throws Throwable {
 
-                myStockPage.assertDisplayedValue(myStockPage.volumeWeightedStockPriceElement_TEA, testData.expectedVolumeWeightedStockPrice15_TEA);
+        myStockPage.assertDisplayedValue("TEA", myStockPage.volumeWeightedStockPriceIndex, testData.expectedVolumeWeightedStockPrice15_TEA);
 
         }
     }

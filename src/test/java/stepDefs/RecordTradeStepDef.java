@@ -4,41 +4,39 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
+import java.util.List;
 import static utils.DriverFactory.*;
 
 public class RecordTradeStepDef {
 
     @Then("The trade record has (.+) header")
     public void the_trade_record_has_the_following_headers(String header) {
-
-        String expectedKey = (header);
-
+        String expectedKey = header;
         switch (header) {
 
             case "Transaction Date":
-                myStockPage.assertDisplayedValue(tradePage.timeStampKey, expectedKey);
+                tradePage.assertDisplayedValueTrades(tradePage.timeStampKey, expectedKey);
                 break;
 
             case "Stock":
-                myStockPage.assertDisplayedValue(tradePage.stockKey, expectedKey);
+                tradePage.assertDisplayedValueTrades(tradePage.stockKey, expectedKey);
                 break;
 
             case "Price":
-                myStockPage.assertDisplayedValue(tradePage.priceKey, expectedKey);
+                tradePage.assertDisplayedValueTrades(tradePage.priceKey, expectedKey);
                 break;
 
             case "No. Shares Purchased":
-                myStockPage.assertDisplayedValue(tradePage.quantityKey, expectedKey);
+                tradePage.assertDisplayedValueTrades(tradePage.quantityKey, expectedKey);
                 break;
 
             case "Buy or Sell":
-                myStockPage.assertDisplayedValue(tradePage.buySellKey, expectedKey);
+                tradePage.assertDisplayedValueTrades(tradePage.buySellKey, expectedKey);
                 break;
-
         }
-
 
     }
 
@@ -49,28 +47,23 @@ public class RecordTradeStepDef {
         switch (header) {
 
             case "Transaction Date":
-                tradePage.assertValuePopulated(tradePage.timeStampValue1);
-                tradePage.assertValuePopulated(tradePage.timeStampValue2);
+                tradePage.assertValuePopulatedTrades(tradePage.timeStampValue);
                 break;
 
             case "Stock":
-                tradePage.assertValuePopulated(tradePage.stockValue1);
-                tradePage.assertValuePopulated(tradePage.stockValue2);
+                tradePage.assertValuePopulatedTrades(tradePage.stockValue);
                 break;
 
             case "Price":
-                tradePage.assertValuePopulated(tradePage.priceValue1);
-                tradePage.assertValuePopulated(tradePage.priceValue2);
+                tradePage.assertValuePopulatedTrades(tradePage.priceValue);
                 break;
 
             case "No. Shares Purchased":
-                tradePage.assertValuePopulated(tradePage.quantityValue1);
-                tradePage.assertValuePopulated(tradePage.quantityValue2);
+                tradePage.assertValuePopulatedTrades(tradePage.quantityValue);
                 break;
 
             case "Buy or Sell":
-                tradePage.assertValuePopulated(tradePage.buySellValue1);
-                tradePage.assertValuePopulated(tradePage.buySellValue2);
+                tradePage.assertValuePopulatedTrades(tradePage.buySellValue);
                 break;
 
         }
@@ -79,7 +72,7 @@ public class RecordTradeStepDef {
 
     @And("^I attempt to made a trade with (.+) missing input$")
     public void i_attempt_to_made_a_trade_with_Stock_missing_input(String missingInput) throws  Throwable {
-        Select oSelect = new Select(tradePage.selectStock);
+ //       Select oSelect = new Select(tradePage.selectStock);
         switch (missingInput) {
 
             case "Stock":
@@ -112,20 +105,19 @@ public class RecordTradeStepDef {
     public void i_then_delete_Stock_input(String missingInput) {
         switch (missingInput) {
             case "Stock":
-                Select oSelect = new Select(tradePage.selectStock);
-                oSelect.selectByVisibleText("Choose Stock");
+                tradePage.deleteTradeInput(missingInput);
                 break;
 
             case "Price":
-                tradePage.price.sendKeys("");
+                tradePage.deleteTradeInput(missingInput);
                 break;
 
             case "Quantity":
-                tradePage.quantity.sendKeys("");
+                tradePage.deleteTradeInput(missingInput);
                 break;
 
   //        case "BuyOrSell":
-  //            tradePage.buyOrSell.sendKeys("");
+  //            tradePage.deleteTradeInput(missingInput);
   //            break;
 
         }
@@ -137,33 +129,42 @@ public class RecordTradeStepDef {
 
     }
 
+    @Then("(.+) trades for (.+) Stock are successfully recorded in Recent Trades section$")
+    public void trades_for_Stock_are_successfully_recorded_in_Recent_Trades_section(Integer numberOfTrades, String stock) {
+
+        tradePage.assertNumberOfTradesRecorded(numberOfTrades, stock);
+
+    }
+
     @Then("^Trade with missing (.+) input is not recorded$")
     public void trade_is_not_recorded(String missingInput) {
 
-        String tradeRecordActual = tradePage.timeStampValue1.getText();
-
         switch (missingInput) {
             case "Stock":
-
-                Assert.assertEquals("Trade with missing " + missingInput + " input was recorded without the required data", testData.tradeRecordExpected, tradeRecordActual);
+                tradePage.tradeRecordExists(missingInput, testData.tradeRecordExpected);
                 break;
 
             case "Price":
-
-                Assert.assertEquals("Trade with missing " + missingInput + " input was recorded without the required data", testData.tradeRecordExpected, tradeRecordActual);
+                tradePage.tradeRecordExists(missingInput, testData.tradeRecordExpected);
                 break;
 
             case "Quantity":
-
-                Assert.assertEquals("Trade with missing " + missingInput + " input was recorded without the required data", testData.tradeRecordExpected, tradeRecordActual);
+                tradePage.tradeRecordExists(missingInput, testData.tradeRecordExpected);
                 break;
 
   //          case "BuyOrSell":
-  //
-  //            Assert.assertEquals("Trade with missing " + missingInput + " input was recorded without the required data", testData.tradeRecordExpected, tradeRecordActual);
+  //            tradePage.tradeRecordExists(missingInput, testData.tradeRecordExpected);
   //            break;
 
         }
+
+    }
+
+    @Then("^The trade is recorded in Recent Trades section$")
+    public void trade_is_not_recorded() {
+        String tradeRecordActual = tradePage.timeStampValue.getText();
+        Assert.assertFalse("Trade with all required fields filled in is not recorded", tradeRecordActual.contentEquals(testData.tradeRecordExpected));
+
 
     }
 

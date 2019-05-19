@@ -2,6 +2,7 @@ package pageObjects;
 
 import cucumber.api.DataTable;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -32,61 +33,37 @@ public class TradePage extends BasePage {
     public WebElement timeStampKey;
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[1]")
-    public WebElement timeStampValue1;
-
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[2]/td[1]")
-    public WebElement timeStampValue2;
+    public WebElement timeStampValue;
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/thead[1]/tr[1]/td[2]")
     public WebElement stockKey;
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[2]")
-    public WebElement stockValue1;
-
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[2]/td[2]")
-    public WebElement stockValue2;
+    public WebElement stockValue;
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/thead[1]/tr[1]/td[3]")
     public WebElement priceKey;
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[3]")
-    public WebElement priceValue1;
-
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[2]/td[3]")
-    public WebElement priceValue2;
+    public WebElement priceValue;
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/thead[1]/tr[1]/td[4]")
     public WebElement quantityKey;
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[4]")
-    public WebElement quantityValue1;
-
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[2]/td[4]")
-    public WebElement quantityValue2;
+    public WebElement quantityValue;
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/thead[1]/tr[1]/td[5]")
     public WebElement buySellKey;
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[5]")
-    public WebElement buySellValue1;
+    public WebElement buySellValue;
 
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr[2]/td[5]")
-    public WebElement buySellValue2;
+    public String recentTradesTableRows = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/table[1]/tbody[1]/tr";
+
 
     public TradePage() {
         super();
-
-    }
-
-    public TradePage assertValuePopulated (WebElement element) {
-        if (WaitUntilWebElementIsVisible(element)) {
-
-            String actualValue = element.getText();
-            System.out.println("Recorded trade data is successfully populated, Data value: " + actualValue);
-            System.out.print(System.lineSeparator());
-            Assert.assertFalse("Data for " + element + " is not populated", actualValue.isEmpty());
-        }
-        return new TradePage();
 
     }
 
@@ -143,4 +120,64 @@ public class TradePage extends BasePage {
         return new TradePage();
     }
 
+    public TradePage deleteTradeInput (String testCase) {
+        if (testCase.equals("Stock")) {
+            Select oSelect = new Select(tradePage.selectStock);
+            oSelect.selectByVisibleText("Choose Stock");
+        } else if (testCase.equals("Price")) {
+            tradePage.price.sendKeys("");
+
+        } else if (testCase.equals("Quantity")) {
+            tradePage.quantity.sendKeys("");
+        }
+
+        //    } else if (testCase.equals("BuyOrell")) {
+        //      tradePage.buyOrSell.sendKeys("");
+        //    }
+
+        return new TradePage();
+    }
+
+
+
+    public TradePage assertDisplayedValueTrades(WebElement element, String expectedValue) {
+        if (WaitUntilWebElementIsVisible(element)) {
+
+            String actualValue = element.getText();
+            System.out.println("Expected Value: " + expectedValue + ", Actual Value: " + actualValue);
+            System.out.print(System.lineSeparator());
+            Assert.assertEquals("Test failed. Actual value: " + actualValue + " doesn't match the expected value: " + expectedValue, expectedValue, actualValue);
+
+        }
+        return new TradePage();
+
+    }
+
+    public TradePage assertValuePopulatedTrades (WebElement element) {
+        if (WaitUntilWebElementIsVisible(element)) {
+
+            String actualValue = element.getText();
+            System.out.println("Recorded trade data is successfully populated, Data value: " + actualValue);
+            System.out.print(System.lineSeparator());
+            Assert.assertFalse("Data for " + element + " is not populated", actualValue.isEmpty());
+        }
+        return new TradePage();
+
+    }
+
+    public TradePage assertNumberOfTradesRecorded (Integer numberOfTrades, String stock) {
+        List<WebElement> rows = driver.findElements(By.xpath(tradePage.recentTradesTableRows));
+        int count = rows.size();
+        System.out.println("Expected number of recorded Trades  for " + stock + " is: " + numberOfTrades + ", Actual number of recorded Trades for " + stock + " is: " + count);
+        Assert.assertTrue("Number of trade recorded (" + count + ") is different from number of trades made (" + numberOfTrades + ")", numberOfTrades.equals(count));
+
+        return new TradePage();
+
+    }
+
+    public TradePage tradeRecordExists (String missingInput, String expectedRecord) {
+        String actualRecord = tradePage.timeStampValue.getText();
+        Assert.assertEquals("Trade with missing " + missingInput + " input was recorded without the required data", expectedRecord, actualRecord);
+        return new TradePage();
+    }
 }

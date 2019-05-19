@@ -3,7 +3,6 @@ package stepDefs;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-
 import static utils.DriverFactory.*;
 
 
@@ -18,6 +17,10 @@ public class SharedStepDef {
     public void i_made_trades_with_the_following_data(DataTable dt)  {
 
         tradePage.makeTradesForDifferentStocks (dt);
+
+
+
+
 
     }
 

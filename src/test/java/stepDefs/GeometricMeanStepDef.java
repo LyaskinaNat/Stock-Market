@@ -11,23 +11,23 @@ public class GeometricMeanStepDef {
 
         switch (stock) {
             case "TEA":
-                myStockPage.assertDisplayedValue(myStockPage.geoMeanElement_TEA, testData.expectedGeoMean_TEA);
+                myStockPage.assertDisplayedValue(stock, myStockPage.geometricMeandIndex, testData.expectedGeoMean_TEA);
                 break;
 
             case "POP":
-                myStockPage.assertDisplayedValue(myStockPage.geoMeanElement_POP, testData.expectedGeoMean_POP);
+                myStockPage.assertDisplayedValue(stock, myStockPage.geometricMeandIndex, testData.expectedGeoMean_POP);
                 break;
 
             case "ALE":
-                myStockPage.assertDisplayedValue(myStockPage.geoMeanElement_ALE, testData.expectedGeoMean_ALE);
+                myStockPage.assertDisplayedValue(stock, myStockPage.geometricMeandIndex, testData.expectedGeoMean_ALE);
                 break;
 
             case "GIN":
-                myStockPage.assertDisplayedValue(myStockPage.geoMeanElement_GIN, testData.expectedGeoMean_GIN);
+                myStockPage.assertDisplayedValue(stock, myStockPage.geometricMeandIndex, testData.expectedGeoMean_GIN);
                 break;
 
             case "JOE":
-                myStockPage.assertDisplayedValue(myStockPage.geoMeanElement_JOE, testData.expectedGeoMean_JOE);
+                myStockPage.assertDisplayedValue(stock, myStockPage.geometricMeandIndex, testData.expectedGeoMean_JOE);
                 break;
         }
 
