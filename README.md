@@ -10,13 +10,13 @@ https://nick-dave-turner.github.io/stock-trade-app/
 There are 43 tests in total, 36 pass and 7 fails.   
 All of the test scenarios except one assigned with @regression tag.  
 
-The scenario which diesn't have @regression tag is the test which requires 16 min to run   
-(in order to cover testing of the following requirement:  
+The scenario which doesn't have @regression tag is the test which requires 16 min to run   
+(in order to test the following requirement:  
 "Calculate Volume Weighted Stock Price based on trades in past 15 minutes")  
-It has a unique tag: @longrun. It required 16 min to run and can be initialised by specifying   
+It has a unique tag: @longrun. It requires 16 min to run and can be initialised by specifying   
 @longrun tag in MainRunnar of the project.  
 
-Feature "Record a trade, with timestamp, quantity of shares, buy or sell indicator and traded price" 
+Feature "Record a trade with timestamp, quantity of shares, buy or sell indicator and traded price" 
 has an additional tag: @smoke.  
 
 Tests with @smoke tag are run first to ensure that the most important function(s) of the App work. 
@@ -33,7 +33,7 @@ before Volume Weighted Stock Price is calculated
 7. Check for Recording a trade with missing value (Quantity) - edge case is failed: Trade is recorded without Quantity Input Value
 
 "Record trade with Buy or Sell" indicator function is not implemented.   
-However, test scenarios and test Step defenitions were written with an anticipation that this indicator is present   
+However, test scenarios and test Step definitions were written with an anticipation that this indicator is present   
 and then associated code was commented out (for demonstration purposes).  
 
 Tests can be run from IntelliJ IDE by    
