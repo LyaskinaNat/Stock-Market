@@ -6,8 +6,8 @@
       Given   I am on Simple Stock page
     Scenario Outline: P/E Ratio Calculation for a given stock
       When  I made <numberOfTrades> trades for <stock> stock with the following data
-        |  Price   |  Quantity   |  BuyOrSell   |
-        |   150    |     20      |     Buy      |
+        |  Price    |  Quantity   |  BuyOrSell   |
+        |   150     |     20      |     Buy      |
 
       Then I see the P/E Ratio for <stock> Stock in My Stock section calculated
       Examples:

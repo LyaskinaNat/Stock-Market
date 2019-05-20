@@ -18,10 +18,6 @@ public class SharedStepDef {
 
         tradePage.makeTradesForDifferentStocks (dt);
 
-
-
-
-
     }
 
     @When("I made (.+) trades for (.+) stock with the following data")
@@ -29,29 +25,23 @@ public class SharedStepDef {
 
             switch (stock) {
                 case "TEA":
-
-                    tradePage.makeTrades("TEA", dt, numberOfTrades);
+                    tradePage.makeTrades(stock, dt, numberOfTrades);
                     break;
 
                 case "POP":
-
-                    tradePage.makeTrades("POP", dt, numberOfTrades);
+                    tradePage.makeTrades(stock, dt, numberOfTrades);
                     break;
 
                 case "ALE":
-
-                    tradePage.makeTrades("ALE", dt, numberOfTrades);
+                    tradePage.makeTrades(stock, dt, numberOfTrades);
                     break;
 
-
                 case "GIN":
-
-                    tradePage.makeTrades("GIN", dt, numberOfTrades);
+                    tradePage.makeTrades(stock, dt, numberOfTrades);
                     break;
 
                 case "JOE":
-
-                    tradePage.makeTrades("JOE", dt, numberOfTrades);
+                    tradePage.makeTrades(stock, dt, numberOfTrades);
                     break;
 
             }

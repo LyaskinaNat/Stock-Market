@@ -23,7 +23,6 @@ public class MainHooks extends DriverFactory {
 
                 driver.manage().deleteAllCookies();
                 driver.quit();
-                driver = null;
 
             } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());

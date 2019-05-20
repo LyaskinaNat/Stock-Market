@@ -18,9 +18,9 @@
     |   200    |     55      |     Sell      |
     Then I see calculated Geometric Mean for all prices for <stock> Stock in My Stock section
   Examples:
-    |  stock    |  numberOfTrades   |
-    |   TEA     |        1          |
-    |   POP     |        2          |
-    |   ALE     |        3          |
-    |   GIN     |        5          |
-    |   JOE     |        10         |
+    |  stock   |  numberOfTrades   |
+    |   TEA    |        1          |
+    |   POP    |        2          |
+    |   ALE    |        3          |
+    |   GIN    |        5          |
+    |   JOE    |        10         |

@@ -21,22 +21,22 @@
 
     Then I see calculated Volume Weighted Stock Price for <stock> stock for all trades
     Examples:
-      |  stock    |  numberOfTrades   |
-      |   TEA     |        1          |
-      |   POP     |        2          |
-      |   ALE     |        3          |
-      |   GIN     |        5          |
-      |   JOE     |        10         |
+      |  stock   |  numberOfTrades   |
+      |   TEA    |        1          |
+      |   POP    |        2          |
+      |   ALE    |        3          |
+      |   GIN    |        5          |
+      |   JOE    |        10         |
 
   @longrun
   Scenario: Calculate Volume Weighted Stock Price for a given stock for trades in past 15 min
     When  I made trades with the following data
-      |  Stock    |  Price   |  Quantity   |  BuyOrSell   |
-      |   TEA     |   100    |     20      |     Buy      |
+      |  Stock   |  Price   |  Quantity   |  BuyOrSell   |
+      |   TEA    |   100    |     20      |     Buy      |
     And I wait 16 min
     And  I made trades with the following data
-      |  Stock    |  Price   |  Quantity   |  BuyOrSell   |
-      |   TEA     |   150    |     50      |     Buy      |
+      |  Stock   |  Price   |  Quantity   |  BuyOrSell   |
+      |   TEA    |   150    |     50      |     Buy      |
     Then I see calculated Volume Weighted Stock Price for a given stock for trades in past 15 min
 
 
