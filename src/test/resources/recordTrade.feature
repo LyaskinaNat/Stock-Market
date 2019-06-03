@@ -70,6 +70,7 @@
       |    Buy or Sell      |
 
   # Trade record validation (boundary value analysis)
+    @wip
     Scenario Outline: I can record a required number of trades consequently
       When  I made <numberOfTrades> trades for <stock> stock with the following data
       |  Price   |  Quantity   |  BuyOrSell    |

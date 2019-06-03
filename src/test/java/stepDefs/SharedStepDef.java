@@ -3,13 +3,15 @@ package stepDefs;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
+import utils.DriverFactory;
+
 import static utils.DriverFactory.*;
 
 
 public class SharedStepDef {
     @Given("I am on Simple Stock page")
     public void i_am_on_Simple_Stock_page()  {
-        myStockPage.goToAppHomePage();
+        DriverFactory.goToAppHomePage();
 
     }
 

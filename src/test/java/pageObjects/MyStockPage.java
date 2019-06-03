@@ -3,6 +3,8 @@ package pageObjects;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import utils.ReadConfig;
+
 import java.util.List;
 
 
@@ -20,23 +22,12 @@ public class MyStockPage extends BasePage {
     super();
  }
 
- public MyStockPage goToAppHomePage() {
-  try {
-   driver.get("https://nick-dave-turner.github.io/stock-trade-app");
-
-  }   catch (Exception e) {
-   Assert.fail("Unable to open App Home page, Exception: " + e.getMessage());
-  }
-
-  return new MyStockPage();
-
- }
 
  public MyStockPage assertDisplayedValue (String stock, int index, String testDataKey) {
      List<WebElement> rows = driver.findElements(By.xpath(myStockPage.myStockTableRows));
      rows.forEach((row) -> {
          String rowText = row.getText();
-         String expectedValue = getExpectedValue(testDataKey);
+         String expectedValue = ReadConfig.getConfigData("config/testData.properties", testDataKey);
          if (rowText.contains(stock)) {
              String strArray[] = rowText.split(" ");
              String actualValue = strArray[index];

@@ -5,11 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.DriverFactory;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
 
 public class BasePage extends DriverFactory {
 
@@ -30,27 +25,6 @@ public class BasePage extends DriverFactory {
             Assert.fail("WebElement is NOT visible, Exception: " + e.getMessage());
             return false;
         }
-    }
-
-
-    public static String getExpectedValue(String expectedValue) {
-
-        try {
-
-            Properties prop = new Properties();
-            File file = new File("config/testData.properties");
-            FileInputStream fis = new FileInputStream(file);
-            prop.load(fis);
-            return prop.getProperty(expectedValue);
-        } catch (Exception e) {
-            System.out.println("Cannot read " + expectedValue + " from Test Data file");
-            Assert.fail("Cannot read " + expectedValue + " from Test Data file, Exception: " + e.getMessage());
-            return e.getMessage();
-        }
-
-
-
-
     }
 
 }

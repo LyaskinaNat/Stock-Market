@@ -162,10 +162,6 @@ public class RecordTradeStepDef {
     public void trade_is_recorded_in_recent_trades_section() {
         tradePage.tradeRecordDoesntExists("tradeRecordExpected");
 
-       // String tradeRecordActual = tradePage.timeStampValue.getText();
-       //Assert.assertFalse("Trade with all required fields filled in is not recorded", tradeRecordActual.contentEquals(testData.tradeRecordExpected));
-
-
     }
 
 }

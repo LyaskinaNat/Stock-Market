@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import utils.ReadConfig;
+
 import java.util.List;
 
 public class TradePage extends BasePage {
@@ -177,14 +179,14 @@ public class TradePage extends BasePage {
 
     public TradePage tradeRecordExists (String missingInput, String testDataKey) {
         String actualRecord = tradePage.timeStampValue.getText();
-        String expectedRecord = getExpectedValue(testDataKey);
+        String expectedRecord = ReadConfig.getConfigData("config/testData.properties", testDataKey);
         Assert.assertEquals("Trade with missing " + missingInput + " input was recorded without the required data", expectedRecord, actualRecord);
         return new TradePage();
     }
 
     public TradePage tradeRecordDoesntExists (String testDataKey) {
         String actualRecord = tradePage.timeStampValue.getText();
-        String expectedRecord = getExpectedValue(testDataKey);
+        String expectedRecord = ReadConfig.getConfigData("config/testData.properties", testDataKey);
         Assert.assertFalse("Trade with all required fields filled in is not recorded", actualRecord.contentEquals(expectedRecord));
 
         return new TradePage();

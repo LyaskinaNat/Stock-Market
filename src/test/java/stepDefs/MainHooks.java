@@ -10,7 +10,7 @@ public class MainHooks extends DriverFactory {
     @Before
 
     public void setup() {
-        driver = getChromeDriver();
+        driver = getDriver();
 
     }
 
