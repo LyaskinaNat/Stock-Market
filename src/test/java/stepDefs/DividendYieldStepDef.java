@@ -12,23 +12,23 @@ public class DividendYieldStepDef {
 
         switch (stock) {
             case "TEA":
-                myStockPage.assertDisplayedValue(stock, myStockPage.dividendYieldIndex, testData.expectedDividendYield_TEA);
+                myStockPage.assertDisplayedValue(stock, myStockPage.dividendYieldIndex, "expectedDividendYield_TEA");
                 break;
 
             case "POP":
-                myStockPage.assertDisplayedValue(stock, myStockPage.dividendYieldIndex, testData.expectedDividendYield_POP);
+                myStockPage.assertDisplayedValue(stock, myStockPage.dividendYieldIndex, "expectedDividendYield_POP");
                 break;
 
             case "ALE":
-                myStockPage.assertDisplayedValue(stock, myStockPage.dividendYieldIndex, testData.expectedDividendYield_ALE);
+                myStockPage.assertDisplayedValue(stock, myStockPage.dividendYieldIndex, "expectedDividendYield_ALE");
                 break;
 
             case "GIN":
-                myStockPage.assertDisplayedValue(stock, myStockPage.dividendYieldIndex, testData.expectedDividendYield_GIN);
+                myStockPage.assertDisplayedValue(stock, myStockPage.dividendYieldIndex, "expectedDividendYield_GIN");
                 break;
 
             case "JOE":
-                myStockPage.assertDisplayedValue(stock, myStockPage.dividendYieldIndex, testData.expectedDividendYield_JOE);
+                myStockPage.assertDisplayedValue(stock, myStockPage.dividendYieldIndex, "expectedDividendYield_JOE");
                 break;
         }
 
@@ -37,7 +37,7 @@ public class DividendYieldStepDef {
     @Then("I see Dividend Yield for a given Stock in My Stock section based on last trade price")
     public void i_see_Dividend_Yield_for_Stock_in_My_Stock_section_based_on_last_trade_price() throws Throwable {
 
-        myStockPage.assertDisplayedValue("POP", myStockPage.dividendYieldIndex, testData.expectedDividendYield_POP_last);
+        myStockPage.assertDisplayedValue("POP", myStockPage.dividendYieldIndex, "expectedDividendYield_POP_last");
 
 
     }

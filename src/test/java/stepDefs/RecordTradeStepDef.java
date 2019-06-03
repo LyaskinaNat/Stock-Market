@@ -4,10 +4,8 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import java.util.List;
+import pageObjects.BasePage;
+
 import static utils.DriverFactory.*;
 
 public class RecordTradeStepDef {
@@ -141,19 +139,19 @@ public class RecordTradeStepDef {
 
         switch (missingInput) {
             case "Stock":
-                tradePage.tradeRecordExists(missingInput, testData.tradeRecordExpected);
+                tradePage.tradeRecordExists(missingInput, "tradeRecordExpected");
                 break;
 
             case "Price":
-                tradePage.tradeRecordExists(missingInput, testData.tradeRecordExpected);
+                tradePage.tradeRecordExists(missingInput, "tradeRecordExpected");
                 break;
 
             case "Quantity":
-                tradePage.tradeRecordExists(missingInput, testData.tradeRecordExpected);
+                tradePage.tradeRecordExists(missingInput, "tradeRecordExpected");
                 break;
 
   //          case "BuyOrSell":
-  //            tradePage.tradeRecordExists(missingInput, testData.tradeRecordExpected);
+  //            tradePage.tradeRecordExists(missingInput, "tradeRecordExpected");
   //            break;
 
         }
@@ -161,9 +159,11 @@ public class RecordTradeStepDef {
     }
 
     @Then("^The trade is recorded in Recent Trades section$")
-    public void trade_is_not_recorded() {
-        String tradeRecordActual = tradePage.timeStampValue.getText();
-        Assert.assertFalse("Trade with all required fields filled in is not recorded", tradeRecordActual.contentEquals(testData.tradeRecordExpected));
+    public void trade_is_recorded_in_recent_trades_section() {
+        tradePage.tradeRecordDoesntExists("tradeRecordExpected");
+
+       // String tradeRecordActual = tradePage.timeStampValue.getText();
+       //Assert.assertFalse("Trade with all required fields filled in is not recorded", tradeRecordActual.contentEquals(testData.tradeRecordExpected));
 
 
     }

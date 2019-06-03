@@ -32,10 +32,11 @@ public class MyStockPage extends BasePage {
 
  }
 
- public MyStockPage assertDisplayedValue (String stock, int index, String expectedValue) {
+ public MyStockPage assertDisplayedValue (String stock, int index, String testDataKey) {
      List<WebElement> rows = driver.findElements(By.xpath(myStockPage.myStockTableRows));
      rows.forEach((row) -> {
          String rowText = row.getText();
+         String expectedValue = getExpectedValue(testDataKey);
          if (rowText.contains(stock)) {
              String strArray[] = rowText.split(" ");
              String actualValue = strArray[index];

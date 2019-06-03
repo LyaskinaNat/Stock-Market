@@ -175,9 +175,18 @@ public class TradePage extends BasePage {
 
     }
 
-    public TradePage tradeRecordExists (String missingInput, String expectedRecord) {
+    public TradePage tradeRecordExists (String missingInput, String testDataKey) {
         String actualRecord = tradePage.timeStampValue.getText();
+        String expectedRecord = getExpectedValue(testDataKey);
         Assert.assertEquals("Trade with missing " + missingInput + " input was recorded without the required data", expectedRecord, actualRecord);
+        return new TradePage();
+    }
+
+    public TradePage tradeRecordDoesntExists (String testDataKey) {
+        String actualRecord = tradePage.timeStampValue.getText();
+        String expectedRecord = getExpectedValue(testDataKey);
+        Assert.assertFalse("Trade with all required fields filled in is not recorded", actualRecord.contentEquals(expectedRecord));
+
         return new TradePage();
     }
 }

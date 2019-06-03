@@ -10,7 +10,7 @@ public class DriverFactory {
     public static WebDriver driver;
     public static MyStockPage myStockPage;
     public static TradePage tradePage;
-    public static TestData testData;
+
 
     public WebDriver getChromeDriver() {
 
@@ -23,13 +23,13 @@ public class DriverFactory {
 
 
         } catch (Exception e) {
-            System.out.println("Error when opening aa browser: " + e.getMessage());
+            System.out.println("Error when opening a browser: " + e.getMessage());
 
         }
         finally {
             myStockPage = PageFactory.initElements(driver, MyStockPage.class);
             tradePage = PageFactory.initElements(driver, TradePage.class);
-            testData = PageFactory.initElements(driver, TestData.class);
+
 
         }
         return driver;
